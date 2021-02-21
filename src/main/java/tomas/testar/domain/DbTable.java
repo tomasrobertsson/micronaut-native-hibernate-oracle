@@ -16,7 +16,7 @@ public class DbTable {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     public Long getID() {
         return ID;
     }
