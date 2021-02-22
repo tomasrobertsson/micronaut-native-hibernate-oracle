@@ -1,0 +1,39 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Test API
+
+
+
+Resources:
+  TestAPI:
+    Type: AWS::Serverless::Api
+    Properties:
+      Name: testApi
+      StageName: api
+      EndpointConfiguration: REGIONAL
+
+  APIFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: io.micronaut.function.aws.proxy.MicronautLambdaHandler
+      Runtime: java11
+      CodeUri: build/libs/demo-0.1-all.jar
+      MemorySize: 2048
+      Timeout: 30
+      Events:
+        GetShisProxy:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: any
+            RestApiId:
+              Ref: TestAPI
+
+
+
+Outputs:
+  ShisApi:
+    Description: URL for application
+    Value: !Sub 'https://${TestAPI}.execute-api.${AWS::Region}.amazonaws.com/api/'
+    Export:
+      Name: TestAPI
