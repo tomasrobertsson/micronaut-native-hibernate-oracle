@@ -9,7 +9,7 @@ import tomas.testar.domain.DbTable;
 import java.util.List;
 
 
-@JdbcRepository(dialect = Dialect.H2)
+@JdbcRepository(dialect = Dialect.ORACLE)
 public interface DbTableRepo extends CrudRepository<DbTable, Long> {
 
     List<DbTable> getByMessageEqual(String message);
