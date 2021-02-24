@@ -2,11 +2,10 @@ package tomas.testar;
 
 
 import io.micronaut.context.annotation.Replaces;
-import io.micronaut.data.jdbc.annotation.JdbcRepository;
-import io.micronaut.data.model.query.builder.sql.Dialect;
+import io.micronaut.data.annotation.Repository;
 
 
-@JdbcRepository(dialect = Dialect.H2)
+@Repository
 @Replaces(DbTableRepo.class)
 public interface DbTableRepoH2 extends DbTableRepo {
 

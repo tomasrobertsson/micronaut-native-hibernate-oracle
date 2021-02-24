@@ -15,6 +15,9 @@ datasources:
 
 jpa:
   default:
-    packages-to-scan:
-      - 'tomas.testar.domain'
-
+    properties:
+      hibernate:
+        bytecode:
+          provider: none
+        hbm2ddl:
+          auto: update
