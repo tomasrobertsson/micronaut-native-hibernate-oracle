@@ -1,17 +1,44 @@
 package tomas.testar.domain;
 
+import io.micronaut.data.annotation.DateCreated;
+
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity(name = "MessageTable")
+@Table
 public class DbTable {
     private Long ID;
     private String message;
+    private MessageType messageType;
+
+
+    private LocalDateTime lastUpdated;
+
+    @DateCreated
+    public LocalDateTime getLastUpdated() {
+        return lastUpdated;
+    }
+
+    public void setLastUpdated(LocalDateTime lastUpdated) {
+        this.lastUpdated = lastUpdated;
+    }
+
+    public String getMessageType() {
+        return messageType.name();
+    }
+
+    public void setMessageType(String messageType) {
+        this.messageType = MessageType.valueOf(messageType);
+    }
 
     public DbTable() {
     }
 
     public DbTable(String message) {
         setMessage(message);
+        this.messageType = MessageType.secret;
 
     }
 
@@ -38,18 +65,13 @@ public class DbTable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         DbTable dbTable = (DbTable) o;
-
-        if (ID != null ? !ID.equals(dbTable.ID) : dbTable.ID != null) return false;
-        return message != null ? message.equals(dbTable.message) : dbTable.message == null;
+        return Objects.equals(ID, dbTable.ID) && Objects.equals(message, dbTable.message) && messageType == dbTable.messageType && Objects.equals(lastUpdated, dbTable.lastUpdated);
     }
 
     @Override
     public int hashCode() {
-        int result = ID != null ? ID.hashCode() : 0;
-        result = 31 * result + (message != null ? message.hashCode() : 0);
-        return result;
+        return Objects.hash(ID, message, messageType, lastUpdated);
     }
 
     @Override
@@ -57,6 +79,8 @@ public class DbTable {
         return "DbTable{" +
                 "ID=" + ID +
                 ", message='" + message + '\'' +
+                ", messageType=" + messageType +
+                ", lastUpdated=" + lastUpdated +
                 '}';
     }
 }

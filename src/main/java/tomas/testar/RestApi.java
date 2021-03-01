@@ -22,6 +22,7 @@ public class RestApi {
         List<DbTable> dbTables = new ArrayList<>();
         tableRepo.findAll().forEach(dbTable -> dbTables.add(dbTable));
         LOG.info("get all {}", dbTables.size());
+        LOG.info("My values {}", dbTables.toString());
         return dbTables;
     }
 
