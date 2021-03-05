@@ -17,3 +17,20 @@ jpa:
       hibernate.hbm2ddl.auto: update
     packages-to-scan:
       - 'tomas.testar.domain'
+
+
+mail:
+  username: test
+  users:
+    - name: test
+      value: 1
+      colors:
+        primary: red
+        secondary: blue
+        last: green
+    - name: test2
+      value: 2
+      colors:
+        primary: yeallow
+        secondary: orange
+        last: ockra

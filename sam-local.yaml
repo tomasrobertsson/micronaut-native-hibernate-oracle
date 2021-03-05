@@ -17,10 +17,14 @@ Resources:
     Properties:
       Handler: not.used.in.provided.runtime
       Runtime: provided
-      CodeUri: function_oracle.zip
+      CodeUri: function_h2.zip
       MemorySize: 512
-      Policies: AWSLambdaBasicExecutionRole
-      Timeout: 15
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - AWSSecretsManagerGetSecretValuePolicy:
+            SecretArn: arn:aws:secretsmanager:eu-west-1:023487358619:secret:Db_API_User-tdFzBJ
+
+      Timeout: 30
       Events:
         GetShisProxy:
           Type: Api

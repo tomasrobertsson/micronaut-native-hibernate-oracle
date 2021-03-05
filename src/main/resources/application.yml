@@ -4,20 +4,46 @@ micronaut:
 
 jackson:
   bean-introspection-module: true
-datasources:
-  default:
-    url: jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
-    driverClassName: org.h2.Driver
-    username: sa
-    password: ''
-    schema-generate: CREATE_DROP
-#    dialect: ORACLE
-    dialect: H2
-jpa:
-  default:
-    properties:
-      hibernate:
-        bytecode:
-          provider: none
-        hbm2ddl:
-          auto: update
+#datasources:
+##  default:
+##    url: jdbc:oracle:thin:@localhost:1521/xe
+##    driverClassName: oracle.jdbc.OracleDriver
+##    username: system
+##    password: oracle
+##    schema-generate: CREATE_DROP
+##    dialect: ORACLE
+#  default:
+#    url: jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+#    driverClassName: org.h2.Driver
+#    username: sa
+#    password: ''
+#    dialect: H2
+#
+#jpa:
+#  default:
+#    properties:
+#      hibernate:
+#        bytecode:
+#          provider: none
+#        hbm2ddl:
+#          auto: update
+
+aws-region: eu-west-1
+aws-test-user: cxloyal
+
+mail:
+  username: test
+  users:
+    - name: test
+      value: 1
+      colors:
+        primary: red
+        secondary: blue
+        last: green
+    - name: test2
+      value: 2
+      colors:
+        primary: yeallow
+        secondary: orange
+        last: ockra
+

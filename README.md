@@ -12,5 +12,9 @@
 
 ## Feature http-client documentation
 
-- [Micronaut HTTP Client documentation](https://docs.micronaut.io/latest/guide/index.html#httpClient)
+- [Micronaut HTTP Client documentation](https://docs.micronaut.io/latest/guide/index.html#httpClient
+
+## Native image
+Require installation of Microsoft Visual Studio and c++ compiler option.
+
 
